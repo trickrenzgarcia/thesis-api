@@ -1,0 +1,38 @@
+
+SET METADATA
+await contract.metadata.set({
+  name: "My Contract",
+  description: "My contract description"
+})
+
+UPDATE METADATA
+await contract.metadata.update({
+  description: "My new contract description"
+})
+
+GET METADATA
+const metadata = await contract.metadata.get();
+console.log(metadata);
+
+////////////////////////////////////////////////////////////////////////////
+
+ERC721
+[Set approval for all NFTs]
+const operator = "undefined";
+await contract.erc721.setApprovalForAll(operator, true);
+
+[Transfer an NFT]
+const walletAddress = "undefined";
+const tokenId = 0;
+await contract.erc721.transfer(walletAddress, tokenId);
+
+[Transfer an NFT from a specific wallet]
+const fromWalletAddress = "undefined";
+const toWalletAddress = "undefined";
+const tokenId = 0;
+await contract.erc721.transferFrom(fromWalletAddress, toWalletAddress, tokenId);
+
+[Get NFT balance of a specific wallet]
+const walletAddress = "undefined";
+const balance = await contract.erc721.balanceOf(walletAddress);
+console.log(balance);
