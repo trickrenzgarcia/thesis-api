@@ -1,4 +1,5 @@
 import express, { Express } from "express";
+import cookieParser from 'cookie-parser'
 import cors from "cors";
 
 import * as middlewares from "./middlewares";
@@ -13,11 +14,12 @@ app.set("json spaces", 2);
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser())
 
 // API Endpoints
 app.use("/collection", api.collectionRoutes);
 app.use("/assets/nft", api.nftRoutes);
-app.use("/login", api.loginRoutes);
+app.use("/auth", api.authRoutes);
 
 // Middlewares
 app.use(middlewares.notFound);
