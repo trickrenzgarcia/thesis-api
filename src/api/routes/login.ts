@@ -1,13 +1,20 @@
 import { Router } from "express";
+import jwt from 'jsonwebtoken'
 
-const loginRoutes = Router();
+import * as controller from '../controllers'
 
-loginRoutes.post("/", (req, res, next) => {
-  const { wallet } = req.body;
+const authRoutes = Router();
 
+const { authorization, login, logout } = controller
+
+authRoutes.get('/login', authorization, (req, res, next) => {
   res.json({
-    wallet: wallet,
-  });
-});
+    data: req.cookies
+  })
+})
 
-export { loginRoutes };
+authRoutes.post("/login", authorization, login);
+
+authRoutes.get('/logout', authorization, logout);
+
+export { authRoutes };

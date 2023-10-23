@@ -2,9 +2,15 @@ POST http://localhost:5000/collection/0x897CDdbbb05fC9488854AF6d554cAe95197c6e9a
 
 ###
 
-POST http://localhost:5000/login HTTP/1.1
+GET http://localhost:5000/auth/login HTTP/1.1
+
+###
+POST http://localhost:5000/auth/login HTTP/1.1
 content-type: application/json
 
 {
   "wallet": "testwalletawdasd"
 }
+
+###
+GET http://localhost:5000/auth/logout HTTP/1.1
