@@ -22,8 +22,14 @@ app.use("/assets/nft", api.nftRoutes);
 app.use("/auth", api.authRoutes);
 
 // Middlewares
-app.use(middlewares.notFound);
-app.use(middlewares.errorHandler);
+//app.use(middlewares.notFound);
+//app.use(middlewares.errorHandler);
+
+// 
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+app.get("/test")
 
 // Starting Server
 app.listen(port, () => {

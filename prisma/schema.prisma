@@ -7,31 +7,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model login {
-  id     Int    @unique(map: "id") @default(autoincrement())
-  uuid   String @unique(map: "uuid") @default(uuid())
-  wallet String
+model users {
+  id        Int    @id @default(autoincrement())
+  firstname String @db.VarChar(50)
+  lastname  String @db.VarChar(50)
+  age       String @db.VarChar(50)
 }
 
-model contract_metadata {
-  id                      Int     @unique(map: "id") @default(autoincrement())
-  uuid                    String  @unique(map: "uuid") @default(uuid())
-  name                    String?
-  description             String?
-  image                   String?
-  social_urls             String?
-  seller_fee_basis_points Int?
-  fee_recipient           String?
-  symbol                  String?
-  address                 String
+model players {
+  id  Int @id @default(autoincrement())
+  name String @db.VarChar(50)
+  age Int 
+  address String @db.VarChar(50)
 }
 
-model nft {
-  id         String   @id @db.VarChar(255)
-  owner      String   @db.Text
-  type       String   @db.Text
-  supply     Int
-  metadata   String   @db.LongText
-  created_at DateTime @default(now()) @db.Timestamp(0)
-  updated_at DateTime @default(now()) @db.Timestamp(0)
-}
+// model login {
+//   id     Int    @unique(map: "id") @default(autoincrement())
+//   uuid   String @unique(map: "uuid") @default(uuid())
+//   wallet String
+// }
+
+// model contract_metadata {
+//   id                      Int     @unique(map: "id") @default(autoincrement())
+//   uuid                    String  @unique(map: "uuid") @default(uuid())
+//   name                    String?
+//   description             String?
+//   image                   String?
+//   social_urls             String?
+//   seller_fee_basis_points Int?
+//   fee_recipient           String?
+//   symbol                  String?
+//   address                 String
+// }
+
+// model nft {
+//   id         String   @id @db.VarChar(255)
+//   owner      String   @db.Text
+//   type       String   @db.Text
+//   supply     Int
+//   metadata   String   @db.LongText
+//   created_at DateTime @default(now()) @db.Timestamp(0)
+//   updated_at DateTime @default(now()) @db.Timestamp(0)
+// }
